@@ -47,5 +47,20 @@ questionHolder.forEach(beginQuiz)
 function beginQuiz(){
     quizQuestions.innerHTML = questionHolder[0].question
     //quizAnswer.innerHTML = questionHolder[0].choices.join(' ')
-    optionOne.innerHTML = questionHolder.question[0].choices[0].join(' ')
+    optionOne.innerHTML = questionHolder[0].choices[0]
+    optionTwo.innerHTML = questionHolder[0].choices[1]
+    optionThree = document.getElementById('op3').disabled = true
+    optionFour = document.getElementById('op4').disabled = true
+
+    
+    optionOne.addEventListener('click', selectedA )
+    optionTwo.addEventListener('click', selectedB)
+
+    function selectedA(){
+        quizResults.innerHTML = 'Wrong!'
+    }
+    function selectedB(){
+        quizResults.innerHTML = 'Correct!'
+    }
+
 }

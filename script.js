@@ -1,3 +1,4 @@
+
 // this code grabs the elements needed 
 var startBtn = document.getElementById("quiz-button")
 var quizQuestions = document.getElementById("quiz-questions")
@@ -14,12 +15,12 @@ var quizTimer = document.getElementById("quiz-timer")
 var questionHolder = [
     {
         question: 'Is Javascript the same as Java?',
-        choices: ['a. Yes', 'b. No'],
+        choices: ['Yes', 'No'],
         answer: 1
     },
     {
         question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
-        choices: ['a. <script name="xxx.js">','b. <script href="xxx.js">','c. <script src="xxx.js">'],
+        choices: ['<script name="xxx.js">', '<script href="xxx.js">', '<script src="xxx.js">'],
         answer: 2
     },
     {
@@ -45,8 +46,8 @@ function beginTimer() {
 
 // this code should be invoked once the timer starts
 function beginQuiz(){
-    for (i = 0; i = questionHolder.length; i++){
+    for (i = 0; i < questionHolder.length; i++){
         quizQuestions.innerHTML = questionHolder[i].question
     }
  
-}
+} 

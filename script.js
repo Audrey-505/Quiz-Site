@@ -41,6 +41,7 @@ var questionHolder = [
 
 // this code will hold the score
 var score = 0
+var n = 10
 
 // this is the timer code 
 function timer(){
@@ -67,6 +68,7 @@ function beginQuiz() {
     quizQuestions.innerHTML = questionHolder[index].question
     options.innerHTML = questionHolder[index].choices
     correctAnswer = questionHolder[index].answer
+    quizScore.innerHTML = score
     //quizResults.innerHTML = ' '
     //testFirst()
 }
@@ -74,18 +76,25 @@ function beginQuiz() {
 function answerA(){
     if (btnOne.value === correctAnswer){
         quizResults.innerHTML = 'Correct!'
+        score = score + n
     } else {
         quizResults.innerHTML = 'Incorrect!'
+        if (score > 0){
+            score = score - n
+        }
     }
-    correctAnswer++
     beginQuiz(index++)
 }
 
 function answerB(){
     if (btnTwo.value === correctAnswer){
         quizResults.innerHTML = 'Correct!'
+        score = score + n
     } else {
         quizResults.innerHTML = 'Incorrect!'
+        if (score > 0){
+            score = score - n
+        }
     }
     beginQuiz(index++)
 }
@@ -93,8 +102,12 @@ function answerB(){
 function answerC(){
     if (btnThree.value === correctAnswer){
         quizResults.innerHTML = 'Correct!'
+        score = score + n
     } else {
         quizResults.innerHTML = 'Incorrect!'
+        if (score > 0){
+            score = score - n
+        }
     }
     beginQuiz(index++)
 }
@@ -102,8 +115,12 @@ function answerC(){
 function answerD(){
     if (btnFour.value === correctAnswer){
         quizResults.innerHTML = 'Correct!'
+        score = score + n
     } else {
         quizResults.innerHTML = 'Incorrect!'
+        if (score > 0){
+            score = score - n
+        }
     }
     beginQuiz(index++)
 }

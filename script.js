@@ -23,12 +23,12 @@ var questionHolder = [
     },
     {
         question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
-        choices: 'A.<script name="xxx.js">  B. <script href="xxx.js">  C. <script src="xxx.js">',
+        choices: 'A.script name="xxx.js" B.script href="xxx.js" C.script src="xxx.js"',
         answer: 'C'
     },
     {
         question: 'Inside which HTML element do we put the JavaScript?',
-        choices: 'A.<javascript> B.<script> C.<scripting> D.<js>',
+        choices: 'A.javascript B.script C.scripting D.js',
         answer: 'B'
     },
     {
@@ -51,7 +51,7 @@ function beginTimer() {
 function beginQuiz() {
     quizQuestions.innerHTML = questionHolder[index].question
     options.innerHTML = questionHolder[index].choices
-    quizResults.innerHTML = ' '
+    //quizResults.innerHTML = ' '
     //testFirst()
 }
 
@@ -63,6 +63,7 @@ function answerA(){
     } else {
         quizResults.innerHTML = 'Incorrect!'
     }
+    correctAnswer++
     beginQuiz(index++)
 }
 

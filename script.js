@@ -9,6 +9,7 @@ var btnTwo = document.getElementById("op2")
 var btnThree = document.getElementById("op3")
 var btnFour = document.getElementById("op4")
 var quizResults = document.getElementById("quiz-results")
+var correctAnswer = document.getElementById("answerHolder")
 var quizScore = document.getElementById("quiz-score")
 var quizTimer = document.getElementById("quiz-timer")
 var index = 0
@@ -51,11 +52,10 @@ function beginTimer() {
 function beginQuiz() {
     quizQuestions.innerHTML = questionHolder[index].question
     options.innerHTML = questionHolder[index].choices
+    correctAnswer = questionHolder[index].answer
     //quizResults.innerHTML = ' '
     //testFirst()
 }
-
-var correctAnswer = questionHolder[index].answer
 
 function answerA(){
     if (btnOne.value === correctAnswer){

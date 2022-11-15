@@ -13,7 +13,7 @@ var correctAnswer = document.getElementById("answerHolder")
 var quizScore = document.getElementById("quiz-score")
 var quizTimer = document.getElementById("quiz-timer")
 var index = 0
-var bIndex = 0 
+var bIndex = 0
 
 // this code holds the array of questions that will be asked
 var questionHolder = [
@@ -44,10 +44,10 @@ var score = 0
 var n = 10
 
 // this is the timer code 
-function timer(){
+function timer() {
     var sec = 30;
-    var timer = setInterval(function(){
-        document.getElementById('quiz-timer').innerHTML='00:'+sec;
+    var timer = setInterval(function () {
+        document.getElementById('quiz-timer').innerHTML = '00:' + sec;
         sec--;
         if (sec < 0) {
             clearInterval(timer);
@@ -65,60 +65,64 @@ function beginTimer() {
 
 // this code should be invoked once the timer starts
 function beginQuiz() {
-    quizQuestions.innerHTML = questionHolder[index].question
-    options.innerHTML = questionHolder[index].choices
-    correctAnswer = questionHolder[index].answer
-    quizScore.innerHTML = score
+       quizScore.innerHTML = score 
+    if (index < questionHolder.length) {
+        quizQuestions.innerHTML = questionHolder[index].question
+        options.innerHTML = questionHolder[index].choices
+        correctAnswer = questionHolder[index].answer
+    } else {
+       // gameOver() 
+    }
     //quizResults.innerHTML = ' '
     //testFirst()
 }
 
-function answerA(){
-    if (btnOne.value === correctAnswer){
+function answerA() {
+    if (btnOne.value === correctAnswer) {
         quizResults.innerHTML = 'Correct!'
         score = score + n
     } else {
         quizResults.innerHTML = 'Incorrect!'
-        if (score > 0){
+        if (score > 0) {
             score = score - n
         }
     }
     beginQuiz(index++)
 }
 
-function answerB(){
-    if (btnTwo.value === correctAnswer){
+function answerB() {
+    if (btnTwo.value === correctAnswer) {
         quizResults.innerHTML = 'Correct!'
         score = score + n
     } else {
         quizResults.innerHTML = 'Incorrect!'
-        if (score > 0){
+        if (score > 0) {
             score = score - n
         }
     }
     beginQuiz(index++)
 }
 
-function answerC(){
-    if (btnThree.value === correctAnswer){
+function answerC() {
+    if (btnThree.value === correctAnswer) {
         quizResults.innerHTML = 'Correct!'
         score = score + n
     } else {
         quizResults.innerHTML = 'Incorrect!'
-        if (score > 0){
+        if (score > 0) {
             score = score - n
         }
     }
     beginQuiz(index++)
 }
 
-function answerD(){
-    if (btnFour.value === correctAnswer){
+function answerD() {
+    if (btnFour.value === correctAnswer) {
         quizResults.innerHTML = 'Correct!'
         score = score + n
     } else {
         quizResults.innerHTML = 'Incorrect!'
-        if (score > 0){
+        if (score > 0) {
             score = score - n
         }
     }
@@ -198,24 +202,24 @@ function answerD(){
 } */
 
 
-    /* function beginQuiz(){
-    quizQuestions.innerHTML = questionHolder[index].question
-    optionOne.innerHTML = questionHolder[index].choices[0]
-    optionTwo.innerHTML = questionHolder[index].choices[1]
+/* function beginQuiz(){
+quizQuestions.innerHTML = questionHolder[index].question
+optionOne.innerHTML = questionHolder[index].choices[0]
+optionTwo.innerHTML = questionHolder[index].choices[1]
+ 
+optionOne.addEventListener('click', questionTwoCorrect)
+optionTwo.addEventListener('click', questionTwoIncorrect)
+
+function questionTwoCorrect(){
+  quizResults.innerHTML = 'Wrong!'
+  beginQuiz(index++)
+}
+
+function questionTwoIncorrect(){
+    quizResults.innerHTML = 'Correct!'
+    beginQuiz(index++) 
+}   
     
-    optionOne.addEventListener('click', questionTwoCorrect)
-    optionTwo.addEventListener('click', questionTwoIncorrect)
-
-    function questionTwoCorrect(){
-      quizResults.innerHTML = 'Wrong!'
-      beginQuiz(index++)
-    }
-
-    function questionTwoIncorrect(){
-        quizResults.innerHTML = 'Correct!'
-        beginQuiz(index++) 
-    }   
-        
 } */
 
 

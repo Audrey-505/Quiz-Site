@@ -56,7 +56,7 @@ function beginTimer() {
 } */
 
 
-    function beginQuiz(){
+    /* function beginQuiz(){
     quizQuestions.innerHTML = questionHolder[index].question
     optionOne.innerHTML = questionHolder[index].choices[0]
     optionTwo.innerHTML = questionHolder[index].choices[1]
@@ -74,25 +74,31 @@ function beginTimer() {
         beginQuiz(index++) 
     }   
         
-} 
+} */
 
 function beginQuiz() {
     quizQuestions.innerHTML = questionHolder[index].question
     options.innerHTML = questionHolder[index].choices[bIndex]
-
+    
     var btnOne = document.createElement("button")
     btnOne.innerHTML = 'A.'
     document.getElementById('buttonHolder').appendChild(btnOne)
-    btnOne.addEventListener('click', myFunction)
+    btnOne.addEventListener('click', optionA)
 
-    function myFunction() {
-        console.log('I got clicked')
-    }
-
+    function optionA() {
+        quizResults.innerHTML = 'Wrong!';
+        beginQuiz(index++)
+        }
 
     var btnTwo = document.createElement("button")
     btnTwo.innerHTML = 'B.'
     document.getElementById('buttonHolder').appendChild(btnTwo)
+    btnTwo.addEventListener('click', optionB)
+
+    function optionB() {
+        quizResults.innerHTML = 'Correct!';
+        beginQuiz(index++)
+    }
 
     var btnThree = document.createElement("button")
     btnThree.innerHTML = 'C.'
@@ -102,10 +108,7 @@ function beginQuiz() {
     btnFour.innerHTML = 'D.'
     document.getElementById('buttonHolder').appendChild(btnFour)
 
-    
-
-
-    
+       
 }
 
 

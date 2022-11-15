@@ -4,10 +4,10 @@ var startBtn = document.getElementById("quiz-button")
 var quizQuestions = document.getElementById("quiz-questions")
 var quizAnswer = document.getElementById("quiz-answer")
 var options = document.getElementById("op")
-var optionOne = document.getElementById("op1")
-var optionTwo = document.getElementById("op2")
-var optionThree = document.getElementById("op3")
-var optionFour = document.getElementById("op4")
+var btnOne = document.getElementById("op1")
+var btnTwo = document.getElementById("op2")
+var btnThree = document.getElementById("op3")
+var btnFour = document.getElementById("op4")
 var quizResults = document.getElementById("quiz-results")
 var quizScore = document.getElementById("quiz-score")
 var quizTimer = document.getElementById("quiz-timer")
@@ -18,23 +18,23 @@ var bIndex = 0
 var questionHolder = [
     {
         question: 'Is Javascript the same as Java?',
-        choices: ['A. Yes B. No'],
-        answer: 1
+        choices: 'A. Yes B. No',
+        answer: 'B'
     },
     {
         question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
-        choices: ['A. <script name="xxx.js">  B. <script href="xxx.js">  C. <script src="xxx.js">'],
-        answer: 2
+        choices: 'A.<script name="xxx.js">  B. <script href="xxx.js">  C. <script src="xxx.js">',
+        answer: 'C'
     },
     {
         question: 'Inside which HTML element do we put the JavaScript?',
-        choices: ['<javascript>', '<script>', '<scripting>', '<js>'],
-        answer: 1
+        choices: 'A.<javascript> B.<script> C.<scripting> D.<js>',
+        answer: 'B'
     },
     {
         question: 'The external JavaScript file must contain the <script> tag.',
-        choices: ['True', 'False'],
-        answer: 1
+        choices: 'A.True B.False',
+        answer: 'B'
     }
 ]
 
@@ -48,35 +48,81 @@ function beginTimer() {
 
 
 // this code should be invoked once the timer starts
-/* function beginQuiz(){
-    for (i = 0; i < questionHolder.length; i++){
-        quizQuestions.innerHTML = questionHolder[i].question
-    }
- 
-} */
-
-
-    /* function beginQuiz(){
-    quizQuestions.innerHTML = questionHolder[index].question
-    optionOne.innerHTML = questionHolder[index].choices[0]
-    optionTwo.innerHTML = questionHolder[index].choices[1]
-    
-    optionOne.addEventListener('click', questionTwoCorrect)
-    optionTwo.addEventListener('click', questionTwoIncorrect)
-
-    function questionTwoCorrect(){
-      quizResults.innerHTML = 'Wrong!'
-      beginQuiz(index++)
-    }
-
-    function questionTwoIncorrect(){
-        quizResults.innerHTML = 'Correct!'
-        beginQuiz(index++) 
-    }   
-        
-} */
-
 function beginQuiz() {
+    quizQuestions.innerHTML = questionHolder[index].question
+    options.innerHTML = questionHolder[index].choices
+    quizResults.innerHTML = ' '
+    //testFirst()
+}
+
+var correctAnswer = questionHolder[index].answer
+
+function answerA(){
+    if (btnOne.value === correctAnswer){
+        quizResults.innerHTML = 'Correct!'
+    } else {
+        quizResults.innerHTML = 'Incorrect!'
+    }
+    beginQuiz(index++)
+}
+
+function answerB(){
+    if (btnTwo.value === correctAnswer){
+        quizResults.innerHTML = 'Correct!'
+    } else {
+        quizResults.innerHTML = 'Incorrect!'
+    }
+    beginQuiz(index++)
+}
+
+function answerC(){
+    if (btnThree.value === correctAnswer){
+        quizResults.innerHTML = 'Correct!'
+    } else {
+        quizResults.innerHTML = 'Incorrect!'
+    }
+    beginQuiz(index++)
+}
+
+function answerD(){
+    if (btnFour.value === correctAnswer){
+        quizResults.innerHTML = 'Correct!'
+    } else {
+        quizResults.innerHTML = 'Incorrect!'
+    }
+    beginQuiz(index++)
+}
+
+/*function testFirst() {
+  //var btnArray = [btnOne, btnTwo, btnThree, btnFour]
+  var correctAnswer = questionHolder[index].answer
+
+ if (btnOne.click == true){
+    if (btnOne.value === correctAnswer){
+        quizResults.innerHTML = 'Correct!'
+    }
+ }  else if (btnTwo.click == true){
+    if (btnTwo.value === correctAnswer){
+        quizResults.innerHTML = 'Correct!'
+    }
+ } else if (btnThree.clicked == true){
+    if (btnThree.value === correctAnswer){
+        quizResults.innerHTML = 'Correct!'
+    }
+ } else if (btnFour.clicked == true){
+    if (btnFour.value === correctAnswer){
+        quizResults.innerHTML = 'Correct!'
+    } 
+ } else {
+    quizResults.innerHTML = 'Incorrect!'
+ }
+
+ beginQuiz(index++)
+
+} */
+
+
+/* function beginQuiz() {
     quizQuestions.innerHTML = questionHolder[index].question
     options.innerHTML = questionHolder[index].choices[bIndex]
     
@@ -109,7 +155,36 @@ function beginQuiz() {
     document.getElementById('buttonHolder').appendChild(btnFour)
 
        
-}
+} */
+
+
+/* function beginQuiz(){
+    for (i = 0; i < questionHolder.length; i++){
+        quizQuestions.innerHTML = questionHolder[i].question
+    }
+ 
+} */
+
+
+    /* function beginQuiz(){
+    quizQuestions.innerHTML = questionHolder[index].question
+    optionOne.innerHTML = questionHolder[index].choices[0]
+    optionTwo.innerHTML = questionHolder[index].choices[1]
+    
+    optionOne.addEventListener('click', questionTwoCorrect)
+    optionTwo.addEventListener('click', questionTwoIncorrect)
+
+    function questionTwoCorrect(){
+      quizResults.innerHTML = 'Wrong!'
+      beginQuiz(index++)
+    }
+
+    function questionTwoIncorrect(){
+        quizResults.innerHTML = 'Correct!'
+        beginQuiz(index++) 
+    }   
+        
+} */
 
 
 

@@ -42,9 +42,23 @@ var questionHolder = [
 // this code will hold the score
 var score = 0
 
-// this code will run once start button is clicked
-function beginTimer() {
+// this is the timer code 
+function timer(){
+    var sec = 30;
+    var timer = setInterval(function(){
+        document.getElementById('quiz-timer').innerHTML='00:'+sec;
+        sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+}
 
+// this code will run once start button is clicked
+// going to call the beginQuiz() at the end of this function as the beginTimer function should start timer and display quiz
+function beginTimer() {
+    timer()
+    beginQuiz()
 }
 
 

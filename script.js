@@ -12,8 +12,10 @@ var quizResults = document.getElementById("quiz-results")
 var correctAnswer = document.getElementById("answerHolder")
 var quizScore = document.getElementById("quiz-score")
 var quizTimer = document.getElementById("quiz-timer")
+var buttonHolder = document.getElementById("buttonHolder")
+var gameEnd = document.getElementById("game-over")
 var index = 0
-var bIndex = 0
+
 
 // this code holds the array of questions that will be asked
 var questionHolder = [
@@ -39,16 +41,37 @@ var questionHolder = [
     }
 ]
 
-// this code will hold the score
+// this code will hold the inital score values 
 var score = 0
+var oldScore = score
 var n = 10
 
+// this is where the seconds to start with are stored
+var sec = 70
+
 // this is the timer code 
-function timer() {
-    var sec = 30;
+/*function timer() {
+    sec = 30;
     var timer = setInterval(function () {
         document.getElementById('quiz-timer').innerHTML = '00:' + sec;
         sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+}*/
+
+function timer() {
+    sec = 70;
+    var timer = setInterval(function () {
+        document.getElementById('quiz-timer').innerHTML = '00:' + sec;
+        sec--;
+        //if (quizResults.innerHTML === 'Incorrect!') {
+            //quizTimer.innerHTML = `00: ${sec - 10}`
+        //}
+        if (!(oldScore < score)){
+            quizTimer.innerHTML = `00: ${sec - 10}`
+        }
         if (sec < 0) {
             clearInterval(timer);
         }
@@ -65,16 +88,14 @@ function beginTimer() {
 
 // this code should be invoked once the timer starts
 function beginQuiz() {
-       quizScore.innerHTML = score 
+       quizScore.innerHTML = `Current score ${score}` 
     if (index < questionHolder.length) {
         quizQuestions.innerHTML = questionHolder[index].question
         options.innerHTML = questionHolder[index].choices
         correctAnswer = questionHolder[index].answer
     } else {
-       // gameOver() 
+       gameOver() 
     }
-    //quizResults.innerHTML = ' '
-    //testFirst()
 }
 
 function answerA() {
@@ -127,6 +148,36 @@ function answerD() {
         }
     }
     beginQuiz(index++)
+}
+
+function gameOver(){
+    gameEnd.innerHTML = ('GAME OVER')
+    startBtn.setAttribute('class', 'hide')
+    quizQuestions.setAttribute('class', 'hide')
+    options.setAttribute('class', 'hide')
+    buttonHolder.setAttribute('class', 'hide')
+    quizResults.setAttribute('class', 'hide')
+    quizScore.setAttribute('class', 'hide')
+    quizTimer.setAttribute('class', 'hide')
+    var btnEnd = document.createElement("button")
+    btnEnd.innerHTML = 'Save Score'
+    document.body.appendChild(btnEnd)
+    //btnEnd.onclick = saveScore()
+    btnEnd.setAttribute('onclick', 'saveScore()')
+
+}
+
+function saveScore(){
+    var initals = prompt('Please enter initals ex (John Doe > JD)')
+    if (initals == null){
+        alert('Input not valid please enter 2 alphabetical letters')
+        return
+    }
+    var scoreReport = document.createElement("h4")
+    document.body.appendChild(scoreReport)
+    scoreReport.innerHTML = `${initals} your score is ${score}`
+    localStorage.setItem('score', score)
+    localStorage.setItem('initials', initals)
 }
 
 /*function testFirst() {

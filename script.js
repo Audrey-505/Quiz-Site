@@ -47,7 +47,7 @@ var oldScore = score
 var n = 10
 
 // this is where the seconds to start with are stored
-var sec = 70
+var sec = 60
 
 // this is the timer code 
 /*function timer() {
@@ -62,18 +62,19 @@ var sec = 70
 }*/
 
 function timer() {
-    sec = 70;
-    var timer = setInterval(function () {
-        document.getElementById('quiz-timer').innerHTML = '00:' + sec;
+    //sec = 60;
+    var countdown = setInterval(function () {
+        //document.getElementById('quiz-timer').innerHTML = '00:' + sec;
+        quizTimer.innerHTML = '00:' + sec;
         sec--;
         //if (quizResults.innerHTML === 'Incorrect!') {
             //quizTimer.innerHTML = `00: ${sec - 10}`
         //}
-        if (!(oldScore < score)){
-            quizTimer.innerHTML = `00: ${sec - 10}`
-        }
+        //if (!(oldScore < score)){
+            //quizTimer.innerHTML = `00: ${sec - 10}`
+        //}
         if (sec < 0) {
-            clearInterval(timer);
+            clearInterval(countdown);
         }
     }, 1000);
 }
@@ -107,9 +108,16 @@ function answerA() {
         if (score > 0) {
             score = score - n
         }
+        if (!(oldScore < score)){
+            //countdown = quizTimer.innerHTML = `00: ${sec - 10}`
+            sec = sec - 10
+            quizTimer.innerHTML = `00: ${sec}`
+            sec--
+        }
     }
     beginQuiz(index++)
 }
+    
 
 function answerB() {
     if (btnTwo.value === correctAnswer) {
@@ -120,9 +128,16 @@ function answerB() {
         if (score > 0) {
             score = score - n
         }
+        if (!(oldScore < score)){
+            //countdown = quizTimer.innerHTML = `00: ${sec - 10}`
+            sec = sec - 10
+            quizTimer.innerHTML = `00: ${sec}`
+            sec--
+        }
     }
     beginQuiz(index++)
 }
+        
 
 function answerC() {
     if (btnThree.value === correctAnswer) {
@@ -133,9 +148,16 @@ function answerC() {
         if (score > 0) {
             score = score - n
         }
+        if (!(oldScore < score)){
+            //countdown = quizTimer.innerHTML = `00: ${sec - 10}`
+            sec = sec - 10
+            quizTimer.innerHTML = `00: ${sec}`
+            sec--
+        }
     }
     beginQuiz(index++)
 }
+        
 
 function answerD() {
     if (btnFour.value === correctAnswer) {
@@ -145,6 +167,12 @@ function answerD() {
         quizResults.innerHTML = 'Incorrect!'
         if (score > 0) {
             score = score - n
+        }
+        if (!(oldScore < score)){
+            //countdown = quizTimer.innerHTML = `00: ${sec - 10}`
+            sec = sec - 10
+            quizTimer.innerHTML = `00: ${sec}`
+            sec--
         }
     }
     beginQuiz(index++)

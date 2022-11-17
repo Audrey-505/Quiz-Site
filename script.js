@@ -35,10 +35,21 @@ var questionHolder = [
         answer: 'B'
     },
     {
-        question: 'The external JavaScript file must contain the <script> tag.',
+        question: 'The external JavaScript file must contain the script tag.',
         choices: 'A.True B.False',
         answer: 'B'
+    },
+    {
+        question: 'How do you write "Hello World" in an alert box?',
+        choices: 'A.alert("Hello World"); B.msg("Hello World"); C.alertBox("Hello World");',
+        answer: 'A'
+    },
+    {
+        question: 'How do you create a function in JavaScript?',
+        choices: 'A.function=myFunction() B.function myFunction() C.function:myFunction();',
+        answer: 'A'
     }
+    
 ]
 
 // this code will hold the inital score values 
@@ -50,31 +61,13 @@ var n = 10
 var sec = 60
 
 // this is the timer code 
-/*function timer() {
-    sec = 30;
-    var timer = setInterval(function () {
-        document.getElementById('quiz-timer').innerHTML = '00:' + sec;
-        sec--;
-        if (sec < 0) {
-            clearInterval(timer);
-        }
-    }, 1000);
-}*/
-
 function timer() {
-    //sec = 60;
     var countdown = setInterval(function () {
-        //document.getElementById('quiz-timer').innerHTML = '00:' + sec;
         quizTimer.innerHTML = '00:' + sec;
         sec--;
-        //if (quizResults.innerHTML === 'Incorrect!') {
-            //quizTimer.innerHTML = `00: ${sec - 10}`
-        //}
-        //if (!(oldScore < score)){
-            //quizTimer.innerHTML = `00: ${sec - 10}`
-        //}
         if (sec < 0) {
             clearInterval(countdown);
+            gameOver()
         }
     }, 1000);
 }
@@ -93,9 +86,9 @@ function beginQuiz() {
     if (index < questionHolder.length) {
         quizQuestions.innerHTML = questionHolder[index].question
         options.innerHTML = questionHolder[index].choices
-        correctAnswer = questionHolder[index].answer
+        correctAnswer = questionHolder[index].answer 
     } else {
-       gameOver() 
+        gameOver()
     }
 }
 
@@ -109,7 +102,6 @@ function answerA() {
             score = score - n
         }
         if (!(oldScore < score)){
-            //countdown = quizTimer.innerHTML = `00: ${sec - 10}`
             sec = sec - 10
             quizTimer.innerHTML = `00: ${sec}`
             sec--
@@ -129,7 +121,6 @@ function answerB() {
             score = score - n
         }
         if (!(oldScore < score)){
-            //countdown = quizTimer.innerHTML = `00: ${sec - 10}`
             sec = sec - 10
             quizTimer.innerHTML = `00: ${sec}`
             sec--
@@ -149,7 +140,6 @@ function answerC() {
             score = score - n
         }
         if (!(oldScore < score)){
-            //countdown = quizTimer.innerHTML = `00: ${sec - 10}`
             sec = sec - 10
             quizTimer.innerHTML = `00: ${sec}`
             sec--
@@ -169,7 +159,6 @@ function answerD() {
             score = score - n
         }
         if (!(oldScore < score)){
-            //countdown = quizTimer.innerHTML = `00: ${sec - 10}`
             sec = sec - 10
             quizTimer.innerHTML = `00: ${sec}`
             sec--
@@ -190,7 +179,6 @@ function gameOver(){
     var btnEnd = document.createElement("button")
     btnEnd.innerHTML = 'Save Score'
     document.body.appendChild(btnEnd)
-    //btnEnd.onclick = saveScore()
     btnEnd.setAttribute('onclick', 'saveScore()')
 
 }
@@ -208,98 +196,6 @@ function saveScore(){
     localStorage.setItem('initials', initals)
 }
 
-/*function testFirst() {
-  //var btnArray = [btnOne, btnTwo, btnThree, btnFour]
-  var correctAnswer = questionHolder[index].answer
-
- if (btnOne.click == true){
-    if (btnOne.value === correctAnswer){
-        quizResults.innerHTML = 'Correct!'
-    }
- }  else if (btnTwo.click == true){
-    if (btnTwo.value === correctAnswer){
-        quizResults.innerHTML = 'Correct!'
-    }
- } else if (btnThree.clicked == true){
-    if (btnThree.value === correctAnswer){
-        quizResults.innerHTML = 'Correct!'
-    }
- } else if (btnFour.clicked == true){
-    if (btnFour.value === correctAnswer){
-        quizResults.innerHTML = 'Correct!'
-    } 
- } else {
-    quizResults.innerHTML = 'Incorrect!'
- }
-
- beginQuiz(index++)
-
-} */
-
-
-/* function beginQuiz() {
-    quizQuestions.innerHTML = questionHolder[index].question
-    options.innerHTML = questionHolder[index].choices[bIndex]
-    
-    var btnOne = document.createElement("button")
-    btnOne.innerHTML = 'A.'
-    document.getElementById('buttonHolder').appendChild(btnOne)
-    btnOne.addEventListener('click', optionA)
-
-    function optionA() {
-        quizResults.innerHTML = 'Wrong!';
-        beginQuiz(index++)
-        }
-
-    var btnTwo = document.createElement("button")
-    btnTwo.innerHTML = 'B.'
-    document.getElementById('buttonHolder').appendChild(btnTwo)
-    btnTwo.addEventListener('click', optionB)
-
-    function optionB() {
-        quizResults.innerHTML = 'Correct!';
-        beginQuiz(index++)
-    }
-
-    var btnThree = document.createElement("button")
-    btnThree.innerHTML = 'C.'
-    document.getElementById('buttonHolder').appendChild(btnThree)
-
-    var btnFour = document.createElement("button")
-    btnFour.innerHTML = 'D.'
-    document.getElementById('buttonHolder').appendChild(btnFour)
-
-       
-} */
-
-
-/* function beginQuiz(){
-    for (i = 0; i < questionHolder.length; i++){
-        quizQuestions.innerHTML = questionHolder[i].question
-    }
- 
-} */
-
-
-/* function beginQuiz(){
-quizQuestions.innerHTML = questionHolder[index].question
-optionOne.innerHTML = questionHolder[index].choices[0]
-optionTwo.innerHTML = questionHolder[index].choices[1]
- 
-optionOne.addEventListener('click', questionTwoCorrect)
-optionTwo.addEventListener('click', questionTwoIncorrect)
-
-function questionTwoCorrect(){
-  quizResults.innerHTML = 'Wrong!'
-  beginQuiz(index++)
-}
-
-function questionTwoIncorrect(){
-    quizResults.innerHTML = 'Correct!'
-    beginQuiz(index++) 
-}   
-    
-} */
 
 
 

@@ -48,7 +48,7 @@ var questionHolder = [
         question: 'How do you create a function in JavaScript?',
         choices: 'A.function=myFunction() B.function myFunction() C.function:myFunction();',
         answer: 'A'
-    }
+    } 
     
 ]
 
@@ -101,7 +101,7 @@ function answerA() {
         if (score > 0) {
             score = score - n
         }
-        if (!(oldScore < score)){
+        if (!(oldScore > score)){
             sec = sec - 10
             quizTimer.innerHTML = `00: ${sec}`
             sec--
@@ -120,7 +120,7 @@ function answerB() {
         if (score > 0) {
             score = score - n
         }
-        if (!(oldScore < score)){
+        if (!(oldScore > score)){
             sec = sec - 10
             quizTimer.innerHTML = `00: ${sec}`
             sec--
@@ -139,7 +139,7 @@ function answerC() {
         if (score > 0) {
             score = score - n
         }
-        if (!(oldScore < score)){
+        if (!(oldScore > score)){
             sec = sec - 10
             quizTimer.innerHTML = `00: ${sec}`
             sec--
@@ -158,7 +158,7 @@ function answerD() {
         if (score > 0) {
             score = score - n
         }
-        if (!(oldScore < score)){
+        if (!(oldScore > score)){
             sec = sec - 10
             quizTimer.innerHTML = `00: ${sec}`
             sec--
